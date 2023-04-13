@@ -1,5 +1,4 @@
-/* eslint-disable  react/prop-types */
-/* eslint-disable  no-unused-vars */
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { ChevronDown, ChevronUp } from '../icons';
 import { removeItem, increase, decrease } from '../features/cart/cartSlice';
@@ -54,6 +53,14 @@ const CartItem = ({
       </div>
     </article>
   );
+};
+
+CartItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  amount: PropTypes.number.isRequired,
 };
 
 export default CartItem;

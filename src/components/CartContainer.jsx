@@ -1,8 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
 import { useDispatch, useSelector } from 'react-redux';
 import CartItem from './CartItem';
-// import { clearCart } from '../features/cart/cartSlice';
 import { openModal } from '../features/modal/modalSlice';
 
 const CartContainer = () => {
@@ -24,7 +21,16 @@ const CartContainer = () => {
         <h2>Your Bag</h2>
       </header>
       <div>
-        { cartItems.map((item) => <CartItem key={item.id} {...item} />) }
+        { cartItems.map((item) => (
+          <CartItem
+            key={item.id}
+            id={item.id}
+            img={item.img}
+            title={item.title}
+            price={item.price}
+            amount={item.amount}
+          />
+        )) }
       </div>
       <footer>
         <hr />

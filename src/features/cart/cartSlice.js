@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import cartItems from '../../cartItems';
 
@@ -12,11 +10,9 @@ const initialState = {
   isLoading: true,
 };
 
-export const getCartItems = createAsyncThunk('cart/getCartItems', () => {
-  return fetch(url)
+export const getCartItems = createAsyncThunk('cart/getCartItems', () => fetch(url)
   .then((resp) => resp.json())
-  .then((err) => console.log(err));
-})
+  .then((err) => console.log(err)));
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -52,14 +48,14 @@ const cartSlice = createSlice({
     [getCartItems.pending]: (state) => {
       state.isLoading = true;
     },
-    [getCartItems.fulfilled]: (state,action) => {
+    [getCartItems.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.cartItems = action.payload;
     },
     [getCartItems.rejected]: (state) => {
       state.isLoading = false;
     },
-  }
+  },
 });
 
 export default cartSlice.reducer;
